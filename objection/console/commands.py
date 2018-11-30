@@ -288,6 +288,7 @@ COMMANDS = {
                             },
                             'var': {
                                 'meta': 'Watches for Java classes matching a variable value',
+                                'flags': ['--dump-args', '--dump-backtrace', '--dump-return'],
                                 'exec': android_hooking.var_class
                             }
                         }

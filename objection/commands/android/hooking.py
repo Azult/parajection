@@ -338,4 +338,4 @@ def var_class(args: list) -> None:
                               dump_return=_should_dump_return_value(args),
                               dump_backtrace=_should_dump_backtrace(args))
 
-    runner.run_as_job(name='watch-java-method', args=args)
+    runner.run_as_job(name='watch-java-var', args=args)

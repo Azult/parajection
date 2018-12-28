@@ -267,6 +267,39 @@ def watch_class_method(args: list) -> None:
 
     runner.run_as_job(name='watch-method', args=args)
 
+def watch_class_methods_var_returns(args: list) -> None:
+    """
+        Starts an objection jon that hooks into a specific all classes
+        and methods and reports on invocations when specifi
+        args and return values reached.
+
+        :param args:
+        :return:
+    """
+
+    if len(clean_argument_flags(args)) <= 0:
+        click.secho(('Usage: ios hooking watch var_and_returns <classPattern> <methodPattern> <argsPattern> <returnPattern> (eg: Controller login user@gmail.com false) '
+                     '(optional: --dump-backtrace) '
+                     '(optional: --dump-args) '
+                     '(optional: --dump-return)'), bold=True)
+        return
+
+    classes_Pattern = args[0]
+    methods_Pattern = args[1]
+    args_Pattern = args[2]
+    returns_Pattern = args[3]
+
+    runner = FridaRunner()
+    runner.set_hook_with_data(ios_hook('hooking/watch-class-methods-var-returns'),
+                              classes_Pattern=classes_Pattern,
+                              methods_Pattern=methods_Pattern,
+                              args_Pattern=args_Pattern,
+                              returns_Pattern=returns_Pattern,
+                              dump_backtrace=_should_dump_backtrace(args),
+                              dump_args=_should_dump_args(args),
+                              dump_return=_should_dump_return_value(args))
+
+    runner.run_as_job(name='watch-class-methods-var-returns', args=args)
 
 def set_method_return_value(args: list) -> None:
     """

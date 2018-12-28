@@ -499,6 +499,11 @@ COMMANDS = {
                                 'meta': 'Hook a specific method and report on invocations',
                                 'flags': ['--dump-args', '--dump-backtrace', '--dump-return'],
                                 'exec': ios_hooking.watch_class_method
+                            },
+                            'vars': {
+                                'meta': 'Hook a methods by searching paterns',
+                                'flags': ['--dump-args', '--dump-backtrace', '--dump-return'],
+                                'exec': ios_hooking.watch_class_methods_var_returns
                             }
                         }
                     },
